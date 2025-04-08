@@ -26,41 +26,55 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    
-    tasks.withType(Test) {
-    useJUnit()
-    finalizedBy jacocoTestReport
-}
 
     testOptions {
         unitTests.includeAndroidResources = true
     }
 }
+
 jacoco {
     toolVersion = "0.8.10"
 }
 
+// Automatically generate code coverage after tests
+tasks.withType(Test).configureEach {
+    useJUnit()
+    finalizedBy(tasks.jacocoTestReport) // Ensure jacoco runs after tests
+}
 
-
-jacocoTestReport {
-    dependsOn testDebugUnitTest
+// JaCoCo test coverage report configuration
+tasks.register('jacocoTestReport', JacocoReport) {
+    dependsOn tasks.testDebugUnitTest
 
     reports {
-        xml.required = true
-        html.required = true
+        xml.required.set(true)
+        html.required.set(true)
     }
 
-    classDirectories.setFrom(fileTree(dir: "$buildDir/tmp/kotlin-classes/debug", excludes: []))
-    sourceDirectories.setFrom(files(["src/main/java"]))
-    executionData.setFrom(fileTree(dir: "$buildDir", includes: [
-        "jacoco/testDebugUnitTest.exec",
-        "outputs/code-coverage/connected/*coverage.ec"
+    def fileFilter = [
+        '**/R.class',
+        '**/R$*.class',
+        '**/BuildConfig.*',
+        '**/Manifest*.*',
+        '**/*Test*.*'
+    ]
+
+    def debugTree = fileTree(dir: "$buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
+    def javaClasses = fileTree(dir: "$buildDir/intermediates/javac/debug/classes", excludes: fileFilter)
+
+    classDirectories.setFrom(files([debugTree, javaClasses]))
+    sourceDirectories.setFrom(files("src/main/java"))
+    executionData.setFrom(fileTree(dir: buildDir, includes: [
+        'jacoco/testDebugUnitTest.exec',
+        'outputs/code-coverage/connected/*coverage.ec'
     ]))
 }
+
 dependencies {
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
+    testImplementation 'junit:junit:4.13.2'
 }
