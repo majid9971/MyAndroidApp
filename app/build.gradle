@@ -97,6 +97,7 @@ sonarqube {
 
         property("sonar.junit.reportPaths", "build/test-results/testDebugUnitTest")
         property("sonar.java.coveragePlugin", "jacoco")
+        property("sonar.androidLint.reportPaths", "${project.buildDir}/reports/lint-results-debug.xml")
         property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/testDebugUnitTestCoverage/testDebugUnitTestCoverage.xml")
     }
 }
