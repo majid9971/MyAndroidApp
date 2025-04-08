@@ -10,4 +10,16 @@ public class GreetingHelperTest {
         String greeting = helper.greetUser("Majid");
         assertEquals("Hello, Majid!", greeting);
     }
+
+    @Test
+public void testEmptyName() {
+    GreetingHelper helper = new GreetingHelper();
+    assertEquals("Hello, !", helper.greetUser(""));
+}
+
+@Test
+public void testNullName() {
+    GreetingHelper helper = new GreetingHelper();
+    assertEquals("Hello, null!", helper.greetUser(null));
+}
 }
