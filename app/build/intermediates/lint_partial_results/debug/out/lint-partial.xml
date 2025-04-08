@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.2.0" type="partial_results">
+    <map id="UnsafeIntentLaunch">
+            <map id="unprotected">
+                <entry
+                    name="com.example.myandroidapp.MainActivity"
+                    boolean="true"/>
+            </map>
+    </map>
+    <map id="UnusedResources">
+        <location id="R.color.black"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="3"
+            column="12"
+            startOffset="62"
+            endLine="3"
+            endColumn="24"
+            endOffset="74"/>
+        <location id="R.color.white"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="4"
+            column="12"
+            startOffset="104"
+            endLine="4"
+            endColumn="24"
+            endOffset="116"/>
+        <location id="R.style.Base_Theme_MajidApplication"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/themes.xml"
+            line="3"
+            column="12"
+            startOffset="107"
+            endLine="3"
+            endColumn="46"
+            endOffset="141"/>
+        <entry
+            name="model"
+            string="color[black(D),white(D)],drawable[ic_launcher_foreground(U),ic_launcher_background(U),ic_launcher_foreground_1(R)],id[main(D)],layout[activity_main(D)],mipmap[ic_launcher_round(U),ic_launcher(U)],string[app_name(U)],style[Base_Theme_MajidApplication(D),Theme_Material3_DayNight_NoActionBar(E),Theme_MaterialComponents_DayNight_DarkActionBar(R),Theme_MyAndroidApp(U),Theme_MajidApplication(D)],xml[data_extraction_rules(D),backup_rules(D)];2^4,7^3^2,8^3^2,a^b,d^c,e^a;;;"/>
+        <location id="R.style.Theme_MajidApplication"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/themes.xml"
+            line="8"
+            column="12"
+            startOffset="338"
+            endLine="8"
+            endColumn="41"
+            endOffset="367"/>
+        <location id="R.layout.activity_main"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="19"
+            endColumn="53"
+            endOffset="805"/>
+        <location id="R.xml.backup_rules"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/xml/backup_rules.xml"
+            line="8"
+            column="1"
+            startOffset="326"
+            endLine="13"
+            endColumn="23"
+            endOffset="478"/>
+        <location id="R.xml.data_extraction_rules"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/xml/data_extraction_rules.xml"
+            line="6"
+            column="1"
+            startOffset="221"
+            endLine="19"
+            endColumn="25"
+            endOffset="551"/>
+    </map>
+
+</incidents>
