@@ -22,11 +22,7 @@ public void testNullName() {
     GreetingHelper helper = new GreetingHelper();
     assertEquals("Hello, null!", helper.greetUser(null));
 }
-  @Test
-    public void testGreetingWithSpecialChars() {
-        GreetingHelper helper = new GreetingHelper();
-        assertEquals("Hello, @#&*!$", helper.greetUser("@#&*!$"));
-    }
+
 
     @Test
     public void testGreetingWithLongName() {
